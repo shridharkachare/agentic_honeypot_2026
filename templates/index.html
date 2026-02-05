@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Agentic Honeypot</title>
+
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ====================
+         CHAT PANEL
+    ==================== -->
+    <div class="chat">
+        <h2>💬 Scammer Chat</h2>
+
+        <!-- Chat Messages -->
+        <div id="messages"></div>
+
+        <!-- Input -->
+        <div class="input-box">
+            <textarea id="msg" placeholder="Paste scam message here..."></textarea>
+            <button onclick="send()">Send</button>
+        </div>
+    </div>
+
+    <!-- ====================
+         INTELLIGENCE PANEL
+    ==================== -->
+    <div class="intel">
+        <h2>🧠 Scam Intelligence</h2>
+
+        <p><b>Scam Type</b></p>
+        <div id="type" class="intel-box">—</div>
+
+        <p><b>Risk Level</b></p>
+        <div id="risk" class="intel-box">—</div>
+
+        <p><b>Agent Persona</b></p>
+        <div id="persona" class="intel-box">—</div>
+
+        <!-- Actions -->
+        <button class="download-btn" onclick="downloadEvidence()">
+            📥 Download Scam Evidence (CSV)
+        </button>
+
+        <button class="download-btn admin-btn" onclick="window.location.href='/admin'">
+            🛡️ Open Admin Dashboard
+        </button>
+    </div>
+
+</div>
+
+<!-- Main Script -->
+<script src="/static/script.js"></script>
+</body>
+</html>

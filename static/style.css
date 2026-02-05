@@ -1,0 +1,223 @@
+/* ====================
+   GLOBAL
+==================== */
+body {
+  margin: 0;
+  background: #0f172a;
+  color: #e5e7eb;
+  font-family: Arial, sans-serif;
+}
+
+a {
+  color: #38bdf8;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ====================
+   LAYOUT
+==================== */
+.container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ====================
+   CHAT PANEL
+==================== */
+.chat {
+  width: 70%;
+  padding: 20px;
+  border-right: 1px solid #1e293b;
+}
+
+#messages {
+  height: 72vh;
+  overflow-y: auto;
+  padding: 12px;
+  background: #020617;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ====================
+   CHAT BUBBLES
+==================== */
+.user,
+.bot {
+  max-width: 75%;
+  padding: 10px 14px;
+  border-radius: 12px;
+  word-wrap: break-word;
+  line-height: 1.4;
+  font-size: 14px;
+}
+
+/* Scammer message (right) */
+.user {
+  align-self: flex-end;
+  background: #020617;
+  border: 1px solid #38bdf8;
+  color: #38bdf8;
+}
+
+/* Agent reply (left) */
+.bot {
+  align-self: flex-start;
+  background: #020617;
+  border: 1px solid #22c55e;
+  color: #22c55e;
+}
+
+/* ====================
+   INPUT AREA
+==================== */
+.input-box {
+  display: flex;
+  gap: 10px;
+}
+
+textarea {
+  width: 80%;
+  height: 70px;
+  padding: 10px;
+  background: #020617;
+  color: white;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  resize: none;
+}
+
+button {
+  width: 20%;
+  background: #22c55e;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
+  color: #022c22;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+/* ====================
+   INTELLIGENCE PANEL
+==================== */
+.intel {
+  width: 30%;
+  padding: 20px;
+  background: #020617;
+}
+
+.intel-box {
+  padding: 10px;
+  background: #0f172a;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+/* ====================
+   RISK COLORS
+==================== */
+.low {
+  background: #14532d;
+  color: #bbf7d0;
+}
+
+.medium {
+  background: #78350f;
+  color: #fde68a;
+}
+
+.high {
+  background: #7f1d1d;
+  color: #fecaca;
+}
+
+/* ====================
+   BUTTONS
+==================== */
+.download-btn {
+  width: 100%;
+  padding: 10px;
+  margin-top: 12px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.download-btn:hover {
+  background: #1d4ed8;
+}
+
+.admin-btn {
+  background: #7c3aed;
+}
+
+.admin-btn:hover {
+  background: #6d28d9;
+}
+
+.back-btn {
+  background: #2563eb;
+}
+
+.back-btn:hover {
+  background: #1d4ed8;
+}
+
+/* ====================
+   ADMIN DASHBOARD
+==================== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #020617;
+  margin-top: 20px;
+}
+
+th {
+  background: #1e293b;
+  color: #e5e7eb;
+}
+
+td,
+th {
+  padding: 8px;
+  border: 1px solid #334155;
+  text-align: left;
+  vertical-align: top;
+}
+
+tr:nth-child(even) {
+  background: #020617;
+}
+
+tr:hover {
+  background: #0f172a;
+}
+
+/* ====================
+   ERROR / SYSTEM TEXT
+==================== */
+.error {
+  color: #ef4444;
+  font-weight: bold;
+}
+
+.system {
+  color: #facc15;
+  font-style: italic;
+}

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard – Agentic Honeypot</title>
+
+  <!-- Main Styles -->
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container" style="flex-direction: column; padding: 20px;">
+
+  <h2>🛡️ Admin Dashboard</h2>
+
+  <p>
+    This dashboard shows all recorded scam interactions,
+    detected scam types, agent personas, and risk levels
+    for monitoring and cyber-forensics review.
+  </p>
+
+  <button class="download-btn back-btn" onclick="window.location.href='/'">
+    ⬅ Back to Live Chat
+  </button>
+
+  <br><br>
+
+  <table width="100%" cellpadding="8">
+    <thead>
+      <tr>
+        <th>Time</th>
+        <th>Scammer ID</th>
+        <th>Scam Type</th>
+        <th>Persona</th>
+        <th>Risk</th>
+        <th>Message</th>
+        <th>Evidence</th>
+      </tr>
+    </thead>
+
+    <tbody id="rows">
+      <tr>
+        <td colspan="7" style="text-align:center;">
+          Loading records…
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+<script>
+fetch("/api/admin/scams")
+.then(res => {
+  if (!res.ok) throw new Error("API error");
+  return res.json();
+})
+.then(data => {
+  const tbody = document.getElementById("rows");
+  tbody.innerHTML = "";
+
+  if (data.length === 0) {
+    tbody.innerHTML = `
+      <tr>
+        <td colspan="7" style="text-align:center;">
+          No scam records found.
+        </td>
+      </tr>`;
+    return;
+  }
+
+  data.forEach(r => {
+    let riskClass = "low";
+    if (r.risk_score === "HIGH") riskClass = "high";
+    else if (r.risk_score === "MEDIUM") riskClass = "medium";
+
+    tbody.innerHTML += `
+      <tr>
+        <td>${r.timestamp}</td>
+        <td>${r.scammer_id}</td>
+        <td>${r.scam_type}</td>
+        <td>${r.persona}</td>
+        <td class="${riskClass}">${r.risk_score}</td>
+        <td>${r.message}</td>
+        <td>
+          <a href="/api/pdf/${r.scammer_id}" target="_blank">
+            PDF
+          </a>
+        </td>
+      </tr>`;
+  });
+})
+.catch(() => {
+  document.getElementById("rows").innerHTML = `
+    <tr>
+      <td colspan="7" class="error" style="text-align:center;">
+        Failed to load admin data.
+      </td>
+    </tr>`;
+});
+</script>
+
+
+</body>
+</html>
